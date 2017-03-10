@@ -1,4 +1,4 @@
-package Pojos;
+package com.esliceu.dwes.marco.pojo;
 
 
 import org.neo4j.ogm.annotation.GraphId;
@@ -33,6 +33,14 @@ public class Recipe {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

@@ -1,10 +1,10 @@
-package Repositories;
+package com.esliceu.dwes.marco.repository;
 
 
-import Pojos.Recipe;
+
 import org.springframework.data.neo4j.repository.GraphRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import com.esliceu.dwes.marco.pojo.Recipe;
 
 @Repository
 public interface RecipeRepository extends GraphRepository<Recipe> {

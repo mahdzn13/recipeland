@@ -1,15 +1,12 @@
-package app;
+package com.esliceu.dwes.marco;
 
-import Pojos.Recipe;
-import Repositories.RecipeRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
-
+import com.esliceu.dwes.marco.pojo.Recipe;
+import com.esliceu.dwes.marco.repository.RecipeRepository;
 
 
 @SpringBootApplication
