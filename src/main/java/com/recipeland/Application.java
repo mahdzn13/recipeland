@@ -1,12 +1,12 @@
-package com.esliceu.dwes.marco;
+package com.recipeland;
 
+import com.recipeland.repository.RecipeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
-import com.esliceu.dwes.marco.pojo.Recipe;
-import com.esliceu.dwes.marco.repository.RecipeRepository;
+import com.recipeland.pojo.Recipe;
 
 
 @SpringBootApplication

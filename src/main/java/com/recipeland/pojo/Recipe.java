@@ -1,4 +1,4 @@
-package com.esliceu.dwes.marco.pojo;
+package com.recipeland.pojo;
 
 
 import org.neo4j.ogm.annotation.GraphId;
