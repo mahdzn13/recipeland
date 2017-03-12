@@ -5,25 +5,22 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
-public class Recipe {
+public class Ingredient {
     @GraphId private Long id;
 
     private String name;
 
-    private Recipe() {
+    private Ingredient() {
         // Empty constructor required as of Neo4j API 2.0.5
     }
 
-    public Recipe(String name) {
+    public Ingredient(String name) {
         this.name = name;
     }
 
 
 
 
-    public String toString() {
-        return this.name;
-    }
 
     public String getName() {
         return name;
@@ -41,4 +38,3 @@ public class Recipe {
         this.id = id;
     }
 }
-

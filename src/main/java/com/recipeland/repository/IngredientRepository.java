@@ -1,12 +1,10 @@
 package com.recipeland.repository;
 
-
-
+import com.recipeland.pojo.Ingredient;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.stereotype.Repository;
-import com.recipeland.pojo.Recipe;
 
 @Repository
-public interface RecipeRepository extends GraphRepository<Recipe> {
+public interface IngredientRepository extends GraphRepository<Ingredient> {
 
 }
