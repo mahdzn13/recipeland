@@ -1,4 +1,4 @@
-package com.recipeland.Controller;
+package com.recipeland.controller;
 
 
 import com.recipeland.pojo.User;
@@ -29,6 +29,7 @@ public class UserController {
         userRepository.save(marco);
         userRepository.save(joshua);
         userRepository.save(jose);
+
     }
     @RequestMapping("/deleteUsers")
     public void deleteAllUsers(){

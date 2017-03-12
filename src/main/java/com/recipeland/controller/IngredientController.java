@@ -1,4 +1,4 @@
-package com.recipeland.Controller;
+package com.recipeland.controller;
 
 
 import com.recipeland.pojo.Ingredient;
