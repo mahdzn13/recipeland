@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+
 
 @RestController
 public class IngredientController {
@@ -18,8 +18,21 @@ public class IngredientController {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    @RequestMapping("/users")
-    public List<Ingredient> usuarios(){
-        return (List<Ingredient>) ingredientRepository.findAll();
+    @RequestMapping("/createIngredients")
+    public void createIngredients(){
+        //Creation of the data
+        Ingredient manzana = new Ingredient("Manzana");
+        Ingredient pepinillo = new Ingredient("Pepinillo");
+        Ingredient lomo = new Ingredient("Lomo");
+
+        //Creation of nodes using the data
+        ingredientRepository.save(manzana);
+        ingredientRepository.save(pepinillo);
+        ingredientRepository.save(lomo);
+    }
+
+    @RequestMapping("/deleteIngredients")
+    public void deleteAllIngredients(){
+       ingredientRepository.deleteAll();
     }
 }

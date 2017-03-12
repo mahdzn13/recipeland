@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 public class RecipeController {
@@ -18,8 +17,25 @@ public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
 
-    @RequestMapping("/users")
-    public List<Recipe> usuarios(){
-        return (List<Recipe>) recipeRepository.findAll();
+    @RequestMapping("/createRecipes")
+    public void createRecipes(){
+        //Creation of the data
+        Recipe volcano = new Recipe("Volcano");
+        Recipe lasagna = new Recipe("Lasagna");
+        Recipe bacalao = new Recipe("Bacalao al pin pin");
+
+        //Creation of nodes using the data
+        recipeRepository.save(volcano);
+        recipeRepository.save(lasagna);
+        recipeRepository.save(bacalao);
+
+        //EXAMPLE return statement with query
+        // return (List<Recipe>) recipeRepository.findAll();
+    }
+
+
+    @RequestMapping("/deleteRecipes")
+    public void deleteAllRecipes(){
+        recipeRepository.deleteAll();
     }
 }
