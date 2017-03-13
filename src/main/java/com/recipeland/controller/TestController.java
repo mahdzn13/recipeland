@@ -36,9 +36,17 @@ public class TestController {
         ic.deleteAllIngredients();
 
         //Inserts
+        ic.createIngredients();
         rc.createRecipes();
         uc.createUsers();
-        ic.createIngredients();
+
+
+        //Relationships
+        Long id1,id2;
+        id1 = rc.getRecipeId("Lasagna").getId();
+        id2 = ic.getIngredientId("Lomo").getId();
+        System.out.println(id1 +"|"+ id2);
+        ic.addIngredientToRecipe(id1,id2);
     }
 
 }

@@ -33,6 +33,10 @@ public class RecipeController {
         // return (List<Recipe>) recipeRepository.findAll();
     }
 
+    @RequestMapping("/getRecipeId")
+    public Recipe getRecipeId(String recipeName){
+        return recipeRepository.getRecipeId(recipeName);
+    }
 
     @RequestMapping("/deleteRecipes")
     public void deleteAllRecipes(){

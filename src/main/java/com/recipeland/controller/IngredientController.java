@@ -31,6 +31,16 @@ public class IngredientController {
         ingredientRepository.save(lomo);
     }
 
+    @RequestMapping("/addIngredientToRecipe")
+    public void addIngredientToRecipe(Long recipeId,Long ingredientId){
+        ingredientRepository.addIngredientToRecipe(recipeId,ingredientId);
+    }
+
+    @RequestMapping("/getIngredientId")
+    public Ingredient getIngredientId(String ingredientName){
+        return ingredientRepository.getIngredientId(ingredientName);
+    }
+
     @RequestMapping("/deleteIngredients")
     public void deleteAllIngredients(){
        ingredientRepository.deleteAll();
