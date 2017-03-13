@@ -5,20 +5,20 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
-public class Ingredient {
+public class Allergy {
     @GraphId private Long id;
 
     private String name;
+    private String description;
 
-
-    private Ingredient() {
+    private Allergy() {
         // Empty constructor required as of Neo4j API 2.0.5
     }
 
-    public Ingredient(String name) {
+    public Allergy(String name, String description) {
         this.name = name;
+        this.description = description;
     }
-
 
 
 
@@ -38,4 +38,13 @@ public class Ingredient {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
+

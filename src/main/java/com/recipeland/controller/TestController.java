@@ -1,6 +1,7 @@
 package com.recipeland.controller;
 
 
+import com.recipeland.pojo.Recipe;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,9 +32,11 @@ public class TestController {
     @RequestMapping("/serveAll")
     public void AIO(){
         //Deletes
+        /*
         rc.deleteAllRecipes();
         uc.deleteAllUsers();
         ic.deleteAllIngredients();
+        */
 
         //Inserts
         ic.createIngredients();
@@ -42,11 +45,13 @@ public class TestController {
 
 
         //Relationships
+        /*
         Long id1,id2;
         id1 = rc.getRecipeId("Lasagna").getId();
         id2 = ic.getIngredientId("Lomo").getId();
         System.out.println(id1 +"|"+ id2);
         ic.addIngredientToRecipe(id1,id2);
+        */
     }
 
 }

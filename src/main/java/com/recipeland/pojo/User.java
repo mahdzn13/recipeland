@@ -10,21 +10,18 @@ public class User {
 
     private String username;
     private String name;
+    private String surname;
     private String email;
-
 
     private User() {
         // Empty constructor required as of Neo4j API 2.0.5
     }
 
-    public User(String name) {
+    public User(String username, String email, String name, String surname ) {
         this.name = name;
-    }
-
-    public User(String username, String name, String email ) {
         this.username = username;
-        this.name = name;
         this.email = email;
+        this.surname = surname;
     }
 
 
@@ -60,5 +57,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }

@@ -9,13 +9,15 @@ public class Recipe {
     @GraphId private Long id;
 
     private String name;
+    private String image;
 
     private Recipe() {
         // Empty constructor required as of Neo4j API 2.0.5
     }
 
-    public Recipe(String name) {
+    public Recipe(String name, String image) {
         this.name = name;
+        this.image = image;
     }
 
 
@@ -39,6 +41,14 @@ public class Recipe {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
 

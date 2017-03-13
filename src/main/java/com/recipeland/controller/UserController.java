@@ -21,9 +21,9 @@ public class UserController {
     @RequestMapping("/createUsers")
     public void createUsers(){
         //Creation of the data
-        User marco = new User("mahernandezd","Marco","marco@recipeland.com");
-        User joshua = new User("jgarcias","Joshua","joshua@recipeland.com");
-        User jose = new User("jjimenez","Jose","jose@recipeland.com");
+        User marco = new User("mahernandezd","marco@recipeland.com","Marco","Antoniete");
+        User joshua = new User("jgarcias","joshua@recipeland.com","Joshua","Garcilaso");
+        User jose = new User("jjimenez","jose@recipeland.com","Jose","Mariana");
 
         //Creation of nodes using the data
         userRepository.save(marco);

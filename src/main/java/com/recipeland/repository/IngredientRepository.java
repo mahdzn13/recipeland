@@ -6,6 +6,8 @@ import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface IngredientRepository extends GraphRepository<Ingredient> {
     //@Query("MATCH (r:Recipe {id:'recipeName'}), (i:Ingredient {id:'ingredientName'}) CREATE (i)-[:PART_OF]->(r)")
@@ -14,4 +16,7 @@ public interface IngredientRepository extends GraphRepository<Ingredient> {
 
     @Query("MATCH (i:Ingredient {name:'ingredientName'}) RETURN ID(i)")
     public Ingredient getIngredientId(@Param("ingredientName") String ingredientName);
+
+    @Query("MATCH (i:Ingredient) return i")
+    public List<Ingredient> getAllIngredients();
 }
