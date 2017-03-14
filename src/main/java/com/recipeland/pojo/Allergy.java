@@ -4,8 +4,10 @@ package com.recipeland.pojo;
 import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
+
 @NodeEntity
-public class Allergy {
+public class Allergy extends BasicNode{
+
     @GraphId private Long id;
 
     private String name;
@@ -46,5 +48,7 @@ public class Allergy {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
 }
 

@@ -5,7 +5,7 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
-public class Ingredient {
+public class Ingredient extends BasicNode{
     @GraphId private Long id;
 
     private String name;

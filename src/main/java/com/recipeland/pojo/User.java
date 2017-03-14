@@ -5,7 +5,7 @@ import org.neo4j.ogm.annotation.GraphId;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @NodeEntity
-public class User {
+public class User extends BasicNode {
     @GraphId private Long id;
 
     private String username;

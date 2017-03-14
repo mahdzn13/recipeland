@@ -1,0 +1,49 @@
+package com.recipeland.controller;
+
+
+import com.recipeland.pojo.Allergy;
+import com.recipeland.repository.AllergyRepository;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+
+@RestController
+public class AllergyController {
+    @Autowired
+    private BeanFactory beanFactory;
+
+    @Autowired
+    private AllergyRepository allergyRepository;
+
+    @RequestMapping("/createAllergys")
+    public void createAllergys(){
+        //Creation of the data
+        Allergy a1 = new Allergy("Alergia1","desc");
+        Allergy a2 = new Allergy("Alergia2","desc");
+        Allergy a3 = new Allergy("Alergia3","desc");
+
+        //Creation of nodes using the data
+        allergyRepository.save(a1);
+        allergyRepository.save(a2);
+        allergyRepository.save(a3);
+    }
+
+    @RequestMapping("/getAllergyId")
+    public Allergy getAllergyId(String allergyName){
+        return allergyRepository.getAllergyId(allergyName);
+    }
+
+    @RequestMapping("/getAllAllergies")
+    public List<Allergy> getAllAllergies(){
+        return allergyRepository.getAllAllergies();
+    }
+
+    @RequestMapping("/deleteAllergies")
+    public void deleteAllAllergys(){
+        allergyRepository.deleteAll();
+    }
+}

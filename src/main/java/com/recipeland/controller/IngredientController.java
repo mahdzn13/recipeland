@@ -3,6 +3,8 @@ package com.recipeland.controller;
 
 import com.recipeland.pojo.Ingredient;
 import com.recipeland.repository.IngredientRepository;
+import com.recipeland.saver.IngredientSaver;
+import com.recipeland.utils.Generator;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,27 +21,24 @@ public class IngredientController {
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    @Autowired
+    private IngredientSaver ingredientSaver;
+
     @RequestMapping("/createIngredients")
     public void createIngredients(){
-        //Creation of the data
-        Ingredient pina = new Ingredient("Piña");
-        Ingredient pepinillo = new Ingredient("Pepinillo");
-        Ingredient lomo = new Ingredient("Lomo");
-
-        //Creation of nodes using the data
-        ingredientRepository.save(pina);
-        ingredientRepository.save(pepinillo);
-        ingredientRepository.save(lomo);
+        ingredientSaver.ingredientSaver("Piña");
+        ingredientSaver.ingredientSaver("Lomo");
+        ingredientSaver.ingredientSaver("Atun");
     }
 
     @RequestMapping("/addIngredientToRecipe")
-    public void addIngredientToRecipe(Long recipeId,Long ingredientId){
-        ingredientRepository.addIngredientToRecipe(recipeId, ingredientId);
+    public void addIngredientToRecipe(String recipeNodeId,String ingredientNodeId){
+        ingredientRepository.addIngredientToRecipe(recipeNodeId, ingredientNodeId);
     }
 
-    @RequestMapping("/getIngredientId")
-    public Ingredient getIngredientId(String ingredientName){
-        return ingredientRepository.getIngredientId(ingredientName);
+    @RequestMapping("/getIngredientNode")
+    public Ingredient getIngredientNode(String ingredientName){
+        return ingredientRepository.getIngredientNode(ingredientName);
     }
     @RequestMapping("/getAllIngredients")
     public List<Ingredient> getAllIngredients(){
