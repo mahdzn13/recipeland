@@ -18,7 +18,7 @@ public interface IngredientRepository extends GraphRepository<Ingredient> {
     @Query("MATCH (a:Allergy {nodeId:{0}}), (i:Ingredient {nodeId:{1}}) CREATE (i)-[:CAN_CAUSE]->(a)")
     public void addIngredientAllergy(String AllergyNodeId, String ingredientNodeId);
 
-    @Query("MATCH (i:Ingredient {nodeId:{0}}), (i:Ingredient {nodeId:{1}}) CREATE (i)-[:CAN_SUBSTITUTE]->(a)")
+    @Query("MATCH (i:Ingredient {nodeId:{0}}), (in:Ingredient {nodeId:{1}}) CREATE (i)-[:CAN_SUBSTITUTE]->(in)")
     public void ingredientCanSubstitute(String ingredientNodeId1, String ingredientNodeId2);
 
     @Query("MATCH (i:Ingredient {name:{0}}) RETURN i")

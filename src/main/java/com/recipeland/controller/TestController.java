@@ -81,10 +81,10 @@ public class TestController {
         uc.createUser("mahernandezd","mahernandezd@recipeland.com","Marco","Hernandez");
 
         //Allergies inserts
-        ac.createAllergy("Wheat Allergy","Caused by wheat");
-        ac.createAllergy("Egg Allergy","Caused by egg");
-        ac.createAllergy("Milk Allergy","Caused by milk");
-        ac.createAllergy("Spice allergy","Caused by spices");
+        ac.createAllergy("wheat allergy","Caused by wheat");
+        ac.createAllergy("egg allergy","Caused by egg");
+        ac.createAllergy("milk allergy","Caused by milk");
+        ac.createAllergy("spice allergy","Caused by spices");
 
         //Relationships :CREATED
         uc.userCreatedRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),uc.getUserNode("ralphy").getNodeId());
@@ -137,6 +137,39 @@ public class TestController {
         ic.addIngredientToRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),ic.getIngredientNode("coriander").getNodeId());
         ic.addIngredientToRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),ic.getIngredientNode("tomato sauce").getNodeId());
 
+        //Relationships :CAN_SUBSTITUTE
+        ic.ingredientCanSubstitute(ic.getIngredientNode("tomato sauce").getNodeId(),ic.getIngredientNode("tomato").getNodeId());
+        ic.ingredientCanSubstitute(ic.getIngredientNode("mozzarella").getNodeId(),ic.getIngredientNode("cheese").getNodeId());
+        ic.ingredientCanSubstitute(ic.getIngredientNode("parmesan").getNodeId(),ic.getIngredientNode("cheese").getNodeId());
+        ic.ingredientCanSubstitute(ic.getIngredientNode("cheddar").getNodeId(),ic.getIngredientNode("cheese").getNodeId());
+        ic.ingredientCanSubstitute(ic.getIngredientNode("cheddar").getNodeId(),ic.getIngredientNode("mozzarella").getNodeId());
+
+        //Relationships :SUBSTITUTE
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),ic.getIngredientNode("cheddar").getNodeId());
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),ic.getIngredientNode("mozzarella").getNodeId());
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),ic.getIngredientNode("parmesan").getNodeId());
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),ic.getIngredientNode("tomato sauce").getNodeId());
+
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Cheap-as-chips veggie pizza").getNodeId(),ic.getIngredientNode("tomato sauce").getNodeId());
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Cheap-as-chips veggie pizza").getNodeId(),ic.getIngredientNode("cheddar").getNodeId());
+
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),ic.getIngredientNode("cheddar").getNodeId());
+        ic.addSubstituteIngredientToRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),ic.getIngredientNode("mozzarella").getNodeId());
+
+        //Relationships :CAN_PRODUCE
+        ic.addIngredientAllergy(ac.getAllergyNode("wheat allergy").getNodeId(),ic.getIngredientNode("flat bread").getNodeId());
+        ic.addIngredientAllergy(ac.getAllergyNode("wheat allergy").getNodeId(),ic.getIngredientNode("lasagna sheet").getNodeId());
+
+        ic.addIngredientAllergy(ac.getAllergyNode("egg allergy").getNodeId(),ic.getIngredientNode("egg").getNodeId());
+
+        ic.addIngredientAllergy(ac.getAllergyNode("milk allergy").getNodeId(),ic.getIngredientNode("cheese").getNodeId());
+        ic.addIngredientAllergy(ac.getAllergyNode("milk allergy").getNodeId(),ic.getIngredientNode("parmesan").getNodeId());
+        ic.addIngredientAllergy(ac.getAllergyNode("milk allergy").getNodeId(),ic.getIngredientNode("mozzarella").getNodeId());
+        ic.addIngredientAllergy(ac.getAllergyNode("milk allergy").getNodeId(),ic.getIngredientNode("cheddar").getNodeId());
+
+        ic.addIngredientAllergy(ac.getAllergyNode("spice allergy").getNodeId(),ic.getIngredientNode("coriander").getNodeId());
+        ic.addIngredientAllergy(ac.getAllergyNode("spice allergy").getNodeId(),ic.getIngredientNode("basil").getNodeId());
+        ic.addIngredientAllergy(ac.getAllergyNode("spice allergy").getNodeId(),ic.getIngredientNode("nutmeg").getNodeId());
 
 
     }
