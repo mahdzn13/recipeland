@@ -44,6 +44,10 @@ public class AllergyController {
     public List<Allergy> getAllAllergies(){
         return allergyRepository.getAllAllergies();
     }
+    @RequestMapping("getUserAllergies")
+    public List<Allergy> getUserAllergies(String userNodeId){
+        return allergyRepository.getUserAllergies(userNodeId);
+    }
 
     @RequestMapping("/deleteAllergies")
     public void deleteAllAllergys(){
