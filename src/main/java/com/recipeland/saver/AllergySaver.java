@@ -15,7 +15,7 @@ public class AllergySaver {
     @Autowired
     private AllergyRepository allergyRepository;
 
-    public void ingredientSaver(String allergyName,String description){
+    public void allergySaver(String allergyName,String description){
         //Creation of the data
         Allergy allergy = new Allergy(allergyName,description);
 

@@ -15,7 +15,7 @@ public class UserSaver {
     @Autowired
     private UserRepository userRepository;
 
-    public void ingredientSaver(String userName, String email, String name, String surname){
+    public void userSaver(String userName, String email, String name, String surname){
         //Creation of the data
         User user = new User(userName,email,name,surname);
 

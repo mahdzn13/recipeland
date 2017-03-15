@@ -21,10 +21,9 @@ public interface IngredientRepository extends GraphRepository<Ingredient> {
     @Query("MATCH (i:Ingredient {nodeId:{0}}), (i:Ingredient {nodeId:{1}}) CREATE (i)-[:CAN_SUBSTITUTE]->(a)")
     public void ingredientCanSubstitute(String ingredientNodeId1, String ingredientNodeId2);
 
-
-    @Query("MATCH (i:Ingredient {name:{0}}) return i")
+    @Query("MATCH (i:Ingredient {name:{0}}) RETURN i")
     public Ingredient getIngredientNode(String ingredientName);
 
-    @Query("MATCH (i:Ingredient) return i")
+    @Query("MATCH (i:Ingredient) RETURN i ORDER BY i.name DESC")
     public List<Ingredient> getAllIngredients();
 }

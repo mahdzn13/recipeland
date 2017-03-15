@@ -4,7 +4,6 @@ package com.recipeland.controller;
 import com.recipeland.pojo.Ingredient;
 import com.recipeland.repository.IngredientRepository;
 import com.recipeland.saver.IngredientSaver;
-import com.recipeland.utils.Generator;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +23,16 @@ public class IngredientController {
     @Autowired
     private IngredientSaver ingredientSaver;
 
+    @RequestMapping("/createIngredient")
+    public void createIngredient(String ingredientName){
+        ingredientSaver.ingredientSaver(ingredientName);
+    }
+
     @RequestMapping("/createIngredients")
     public void createIngredients(){
-        ingredientSaver.ingredientSaver("Piña");
-        ingredientSaver.ingredientSaver("Lomo");
-        ingredientSaver.ingredientSaver("Atun");
+        ingredientSaver.ingredientSaver("Pineapple");
+        ingredientSaver.ingredientSaver("Apple");
+        ingredientSaver.ingredientSaver("Tuna");
     }
 
     @RequestMapping("/addIngredientToRecipe")
@@ -36,14 +40,31 @@ public class IngredientController {
         ingredientRepository.addIngredientToRecipe(recipeNodeId, ingredientNodeId);
     }
 
+    @RequestMapping("/addSubstituteIngredientToRecipe")
+    public void addSubstituteIngredientToRecipe(String recipeNodeId,String ingredientNodeId){
+        ingredientRepository.addSubstituteIngredientToRecipe(recipeNodeId,ingredientNodeId);
+    }
+
+    @RequestMapping("/addIngredientAllergy")
+    public void addIngredientAllergy(String allergyNodeId,String ingredientNodeId){
+        ingredientRepository.addIngredientAllergy(allergyNodeId,ingredientNodeId);
+    }
+
+    @RequestMapping("/ingredientCanSubstitute")
+    public void ingredientCanSubstitute(String ingredientNodeId1,String ingredientNodeId2){
+        ingredientRepository.ingredientCanSubstitute(ingredientNodeId1,ingredientNodeId2);
+    }
+
     @RequestMapping("/getIngredientNode")
     public Ingredient getIngredientNode(String ingredientName){
         return ingredientRepository.getIngredientNode(ingredientName);
     }
+
     @RequestMapping("/getAllIngredients")
     public List<Ingredient> getAllIngredients(){
         return ingredientRepository.getAllIngredients();
     }
+
     @RequestMapping("/deleteIngredients")
     public void deleteAllIngredients(){
        ingredientRepository.deleteAll();

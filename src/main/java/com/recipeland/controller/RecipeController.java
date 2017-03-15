@@ -23,16 +23,21 @@ public class RecipeController {
     @Autowired
     private RecipeSaver recipeSaver;
 
+    @RequestMapping("/createRecipe")
+    public void createRecipe(String recipeName, String recipeImage){
+        recipeSaver.recipeSaver(recipeName,recipeImage);
+     }
+
     @RequestMapping("/createRecipes")
     public void createRecipes(){
-        recipeSaver.recipeSaver("Volcano", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
-        recipeSaver.recipeSaver("Lasagna", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
-        recipeSaver.recipeSaver("Bacalado", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
+        recipeSaver.recipeSaver("Sausage with fries", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
+        recipeSaver.recipeSaver("Pizza Hawaii", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
+        recipeSaver.recipeSaver("Spaghetti", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
     }
 
-    @RequestMapping("/getRecipeId")
-    public Recipe getRecipeId(String recipeName){
-        return recipeRepository.getRecipeId(recipeName);
+    @RequestMapping("/getRecipeNode")
+    public Recipe getRecipeNode(String recipeName){
+        return recipeRepository.getRecipeNode(recipeName);
     }
 
     @RequestMapping("/getAllRecipes")

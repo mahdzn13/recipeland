@@ -3,6 +3,7 @@ package com.recipeland.controller;
 
 import com.recipeland.pojo.Allergy;
 import com.recipeland.repository.AllergyRepository;
+import com.recipeland.saver.AllergySaver;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,22 +20,24 @@ public class AllergyController {
     @Autowired
     private AllergyRepository allergyRepository;
 
-    @RequestMapping("/createAllergys")
-    public void createAllergys(){
-        //Creation of the data
-        Allergy a1 = new Allergy("Alergia1","desc");
-        Allergy a2 = new Allergy("Alergia2","desc");
-        Allergy a3 = new Allergy("Alergia3","desc");
+    @Autowired
+    private AllergySaver allergySaver;
 
-        //Creation of nodes using the data
-        allergyRepository.save(a1);
-        allergyRepository.save(a2);
-        allergyRepository.save(a3);
+    @RequestMapping("/createAllergy")
+    public void createAllergy(String allergyName, String allergyDescription){
+        allergySaver.allergySaver(allergyName,allergyDescription);
     }
 
-    @RequestMapping("/getAllergyId")
-    public Allergy getAllergyId(String allergyName){
-        return allergyRepository.getAllergyId(allergyName);
+    @RequestMapping("/createAllergies")
+    public void createAllergies(){
+        allergySaver.allergySaver("Allergy1","desc1");
+        allergySaver.allergySaver("Allergy2","desc2");
+        allergySaver.allergySaver("Allergy2","desc3");
+    }
+
+    @RequestMapping("/getAllergyNode")
+    public Allergy getAllergyNode(String allergyName){
+        return allergyRepository.getAllergyNode(allergyName);
     }
 
     @RequestMapping("/getAllAllergies")
