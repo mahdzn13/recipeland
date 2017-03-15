@@ -1,7 +1,6 @@
 package com.recipeland.controller;
 
 
-import com.recipeland.pojo.Recipe;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
