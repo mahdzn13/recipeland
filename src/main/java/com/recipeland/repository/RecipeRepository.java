@@ -17,7 +17,7 @@ public interface RecipeRepository extends GraphRepository<Recipe> {
     @Query("MATCH (r:Recipe) RETURN r ORDER BY r.name DESC")
     public List<Recipe> getAllRecipes();
 
-    @Query("MATCH (i:Ingredient)<-[:CAN_SUBSTITUTE]-(in:Ingredient)-[:SUBSTITUTE]->(r:Recipe) WHERE i.name IN {0} AND (r)<-[:PART_OF]-(i) RETURN r")
+    @Query("MATCH (i:Ingredient)<-[:CAN_SUBSTITUTE]-(in:Ingredient)-[:SUBSTITUTE]->(r:Recipe) WHERE i.nodeId IN {0} AND (r)<-[:PART_OF]-(i) RETURN r")
     public List<Recipe> getRecipesWithIngredientsAndSubstitutes(List<String> ingredientNodeIdArray);
 
     @Query("MATCH (u:User)-[:FAVED]->(r:Recipe) WHERE u.nodeId = {0} RETURN r")
