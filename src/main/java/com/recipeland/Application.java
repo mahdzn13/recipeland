@@ -16,11 +16,5 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    /*
-    public CommandLineRunner demo(IngredientRepository repository) {
-        return (args) -> {
 
-        };
-    }
-    */
 }

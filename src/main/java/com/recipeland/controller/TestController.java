@@ -44,11 +44,12 @@ public class TestController {
         //Inserts
 
         //Recipe inserts
+        /*
         rc.createRecipe("Turkey chili jacket potatoes","https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1071476_11.jpg?itok=L5URpV6Y");
         rc.createRecipe("Cheap-as-chips veggie pizza","https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--1096503_11.jpg?itok=cjnugggJ");
         rc.createRecipe("Quick mushroom & spinach lasagna","https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--735467_11.jpg?itok=5-MZ3rNZ");
         rc.createRecipe("Refried bean quesadillas","https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/recipe-image-legacy-id--365499_11.jpg?itok=5ok7D5Hi");
-
+         */
         //Ingredients inserts
         ic.createIngredient("potato");
         ic.createIngredient("olive oil");

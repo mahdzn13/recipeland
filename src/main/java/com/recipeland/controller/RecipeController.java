@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -25,9 +27,10 @@ public class RecipeController {
     @Autowired
     private RecipeSaver recipeSaver;
 
+    //Working POST so now implement it lazy fuck
     @RequestMapping("/createRecipe")
-    public void createRecipe(String recipeName, String recipeImage){
-        recipeSaver.recipeSaver(recipeName,recipeImage);
+    public void createRecipe(HttpServletRequest request, HttpServletResponse response){
+        recipeSaver.recipeSaver(request.getParameter("recipeName"),request.getParameter("recipeImage"));
      }
 
     @RequestMapping("/createRecipes")
