@@ -22,12 +22,6 @@ public class Comment extends BasicNode{
     public Comment(String text) {
         this.text = text;
     }
-    public Comment(String text, Date lastTimeModified) {
-        this.lastTimeModified = lastTimeModified;
-        this.text = text;
-    }
-
-
 
 
     public String getText() {
@@ -44,5 +38,13 @@ public class Comment extends BasicNode{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Date getLastTimeModified() {
+        return lastTimeModified;
+    }
+
+    public void setLastTimeModified(Date lastTimeModified) {
+        this.lastTimeModified = lastTimeModified;
     }
 }
