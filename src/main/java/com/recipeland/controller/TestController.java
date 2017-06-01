@@ -78,7 +78,7 @@ public class TestController {
 
         //Users inserts
         uc.createUser("ralphy","ralphy@recipeland.com","Ralph","The One");
-        uc.createUser("mahernandezd","mahernandezd@recipeland.com","Marco","Hernandez");
+        uc.createUser("Developer","Developerd@recipeland.com","Developer","Deviloper");
 
         //Allergies inserts
         ac.createAllergy("wheat allergy","Caused by wheat");
@@ -92,13 +92,13 @@ public class TestController {
         uc.userCreatedRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),uc.getUserNode("ralphy").getNodeId());
         uc.userCreatedRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),uc.getUserNode("ralphy").getNodeId());
 
-        //User mahernandezd :faved,blacklisted,seelater
-        uc.userFavedRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),uc.getUserNode("mahernandezd").getNodeId());
+        //User Developer :faved,blacklisted,seelater
+        uc.userFavedRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),uc.getUserNode("Developer").getNodeId());
 
-        uc.userBlacklistedRecipe(rc.getRecipeNode("Cheap-as-chips veggie pizza").getNodeId(),uc.getUserNode("mahernandezd").getNodeId());
+        uc.userBlacklistedRecipe(rc.getRecipeNode("Cheap-as-chips veggie pizza").getNodeId(),uc.getUserNode("Developer").getNodeId());
 
-        uc.userSeeLaterRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),uc.getUserNode("mahernandezd").getNodeId());
-        uc.userSeeLaterRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),uc.getUserNode("mahernandezd").getNodeId());
+        uc.userSeeLaterRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),uc.getUserNode("Developer").getNodeId());
+        uc.userSeeLaterRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),uc.getUserNode("Developer").getNodeId());
 
 
         //Relationships :PART_OF

@@ -1,8 +1,5 @@
 package com.recipeland.pojo;
 
-/**
- * Created by mahernandezd on 14/03/17.
- */
 public abstract class BasicNode {
 
     private String nodeId;

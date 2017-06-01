@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -73,7 +74,29 @@ public class RecipeController {
     @RequestMapping("/getRecipesWithIngredientsAndSubstitutes")
     public List<Recipe> getRecipesWithIngredientsAndSubstitutes(String nodeId1,String nodeId2,String nodeId3,String nodeId4,String nodeId5,String nodeId6,String nodeId7){
         List<String> ingredientNameArray = new ArrayList<>(Arrays.asList(nodeId1,nodeId2,nodeId3,nodeId4,nodeId5,nodeId6,nodeId7));
-        return recipeRepository.getRecipesWithIngredientsAndSubstitutes(ingredientNameArray);
+        ArrayList<Recipe> recipesPartOf = new ArrayList<> (recipeRepository.getRecipesWithIngredients(ingredientNameArray));
+        ArrayList<Recipe> recipesWithSubstitutes = new ArrayList<> (recipeRepository.getRecipesWithIngredientsAndSubstitutes(ingredientNameArray));
+        ArrayList<Recipe> compare;
+        ArrayList<Recipe> result;
+
+        if (recipesPartOf.size() > recipesWithSubstitutes.size()){
+            result = recipesPartOf;
+            compare = recipesWithSubstitutes;
+        } else {
+            result = recipesWithSubstitutes;
+            compare = recipesPartOf;
+        }
+
+        for (int i = 0; i < result.size()-1; i++) {
+            for (int j = 0; j < compare.size()-1; j++) {
+                if (Objects.equals(result.get(i).getNodeId(), compare.get(j).getNodeId())){
+                    break;
+                } else if(j == compare.size()-1 && !Objects.equals(result.get(i).getNodeId(), compare.get(j).getNodeId())){
+                    result.add(compare.get(j));
+                }
+            }
+        }
+        return result;
     }
 
     @RequestMapping("/deleteRecipes")

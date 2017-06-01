@@ -1,0 +1,7 @@
+<neo4j:config xmlns:neo4j="http://www.springframework.org/schema/aop"/>
+
+<bean id="graphDatabaseService" class="org.springframework.data.neo4j.rest.SpringCypherRestGraphDatabase">
+<constructor-arg value="http://hobby-phgibgmhoeaggbkeedejlipl.dbs.graphenedb.com:24789" index="0"/>
+    <constructor-arg value="username" index="user"/>
+    <constructor-arg value="password" index="pass"/>
+</bean>

@@ -26,6 +26,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     UserSaver usersaver;
 
@@ -36,9 +37,6 @@ public class UserController {
 
     @RequestMapping("/createUsers")
     public void createUsers(){
-        usersaver.userSaver("mahernandezd","marco@recipeland.com","Marco","Antoniete");
-        usersaver.userSaver("jgarcias","joshua@recipeland.com","Joshua","Garcilaso");
-        usersaver.userSaver("jjimenez","jose@recipeland.com","Jose","Mariana");
     }
 
     @RequestMapping("/userCreatedRecipe")
