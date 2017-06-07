@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends GraphRepository<Comment> {
 
-    @Query("MATCH (c:Comment) return c ")
-    public List<Comment> getAllCommentsFromRecipe();
+    @Query("MATCH (c:Comment)-[:IS_POSTED_ON]->(r:Recipe {nodeId:{0}}) return c")
+    public List<Comment> getAllCommentsFromRecipe(String recipeNodeId);
 
     @Query("MATCH (c:Comment {text:{0}}) RETURN c")
     public Comment getCommentNode(String text);

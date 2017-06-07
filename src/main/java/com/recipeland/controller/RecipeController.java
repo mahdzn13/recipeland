@@ -1,13 +1,13 @@
 package com.recipeland.controller;
 
 
+import com.recipeland.pojo.Ingredient;
 import com.recipeland.pojo.Recipe;
 import com.recipeland.repository.RecipeRepository;
 import com.recipeland.saver.RecipeSaver;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class RecipeController {
     @Autowired
@@ -24,6 +24,8 @@ public class RecipeController {
 
     @Autowired
     private RecipeRepository recipeRepository;
+    @Autowired
+    private IngredientController ingredientController;
 
     @Autowired
     private RecipeSaver recipeSaver;
@@ -31,14 +33,53 @@ public class RecipeController {
     //Working POST so now implement it lazy fuck
     @RequestMapping("/createRecipe")
     public void createRecipe(HttpServletRequest request, HttpServletResponse response){
-        recipeSaver.recipeSaver(request.getParameter("recipeName"),request.getParameter("recipeImage"));
+        //Extract all the data for the recipe
+        String recipeNodeId = recipeSaver.recipeSaver(request.getParameter("recipeName"),request.getParameter("recipeImage"),request.getParameter("recipeText"));
+
+        //Get all recipes
+        List<Ingredient> currentIngredients = ingredientController.getAllIngredients();
+
+        //Vars for extract the data from the request
+        int ingredientPosition = 0;
+        boolean ingredientStillExist = true;
+        List<String> ingredients = new ArrayList<>();
+
+
+        //Gets all ingredients from the request, stops when it doesn't detect that item exist.
+        while (ingredientStillExist){
+            if (request.getParameterMap().get("ingredientArray[" + ingredientPosition + "]") != null){
+                String posToFind = "ingredientArray[" + ingredientPosition + "]";
+                String requestIngredientName = request.getParameterMap().get(posToFind)[0];
+                ingredients.add(requestIngredientName);
+                ingredientPosition++;
+            } else {
+                ingredientStillExist = false;
+            }
+        }
+
+        //Var to keep the index
+        int indexOfCurrentIngredient = 0;
+
+        //Create all ingredients and asociate with the recipe
+        for (String ingredient : ingredients) {
+            indexOfCurrentIngredient = 0;
+            for (Ingredient currentIngredient : currentIngredients){
+                if (Objects.equals(currentIngredient.getName().toUpperCase(), ingredient.toUpperCase())){
+                    ingredientController.addIngredientToRecipe(recipeNodeId,currentIngredient.getNodeId());
+                    break;
+                } else if (indexOfCurrentIngredient == currentIngredients.size()-1){
+                    ingredientController.addIngredientToRecipe(recipeNodeId,ingredientController.createIngredient(ingredient));
+                }
+                indexOfCurrentIngredient++;
+            }
+        }
      }
 
     @RequestMapping("/createRecipes")
     public void createRecipes(){
-        recipeSaver.recipeSaver("Sausage with fries", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
-        recipeSaver.recipeSaver("Pizza Hawaii", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
-        recipeSaver.recipeSaver("Spaghetti", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png");
+        recipeSaver.recipeSaver("Sausage with fries", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png","");
+        recipeSaver.recipeSaver("Pizza Hawaii", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png","");
+        recipeSaver.recipeSaver("Spaghetti", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png","");
     }
 
     @RequestMapping("/getRecipeNode")

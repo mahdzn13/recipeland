@@ -10,6 +10,7 @@ public class Recipe extends BasicNode {
 
     private String name;
     private String image;
+    private String recipeText;
 
     private Recipe() {
         // Empty constructor required as of Neo4j API 2.0.5
@@ -20,6 +21,11 @@ public class Recipe extends BasicNode {
         this.image = image;
     }
 
+    public Recipe(String name, String image, String recipeText) {
+        this.name = name;
+        this.image = image;
+        this.recipeText = recipeText;
+    }
 
 
 
@@ -49,6 +55,14 @@ public class Recipe extends BasicNode {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getRecipeText() {
+        return recipeText;
+    }
+
+    public void setRecipeText(String recipeText) {
+        this.recipeText = recipeText;
     }
 }
 

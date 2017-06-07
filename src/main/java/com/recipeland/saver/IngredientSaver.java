@@ -15,7 +15,7 @@ public class IngredientSaver {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    public void ingredientSaver(String ingredientName){
+    public String ingredientSaver(String ingredientName){
         //Creation of the data
         Ingredient ingredient = new Ingredient(ingredientName);
 
@@ -24,5 +24,7 @@ public class IngredientSaver {
 
         //Creation of nodes using the data
         ingredientRepository.save(ingredient);
+
+        return ingredient.getNodeId();
     }
 }
