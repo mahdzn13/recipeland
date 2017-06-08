@@ -38,8 +38,13 @@ public class CommentController {
     }
 
     @RequestMapping("/getAllCommentsFromRecipe")
-    public List<Comment> getAllComments(String recipeNodeId){
+    public List<Comment> getAllCommentsFromRecipe(String recipeNodeId){
         return commentRepository.getAllCommentsFromRecipe(recipeNodeId);
+    }
+
+    @RequestMapping("/getAllCountOfCommentsFromRecipe")
+    public int getAllCountOfCommentsFromRecipe(String recipeNodeId){
+        return commentRepository.getAllCountOfCommentsFromRecipe(recipeNodeId);
     }
     
 

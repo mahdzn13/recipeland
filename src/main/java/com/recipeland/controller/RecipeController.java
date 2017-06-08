@@ -26,6 +26,8 @@ public class RecipeController {
     private RecipeRepository recipeRepository;
     @Autowired
     private IngredientController ingredientController;
+    @Autowired
+    private UserController userController;
 
     @Autowired
     private RecipeSaver recipeSaver;
@@ -35,6 +37,9 @@ public class RecipeController {
     public void createRecipe(HttpServletRequest request, HttpServletResponse response){
         //Extract all the data for the recipe
         String recipeNodeId = recipeSaver.recipeSaver(request.getParameter("recipeName"),request.getParameter("recipeImage"),request.getParameter("recipeText"));
+
+        //Created by...
+        userController.userCreatedRecipe(recipeNodeId,request.getParameter("userId"));
 
         //Get all recipes
         List<Ingredient> currentIngredients = ingredientController.getAllIngredients();
