@@ -1,6 +1,7 @@
 package com.recipeland.repository;
 
 
+import com.recipeland.queryResult.UserToRecipeQueryResult;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.stereotype.Repository;
@@ -23,15 +24,15 @@ public interface RecipeRepository extends GraphRepository<Recipe> {
     @Query("MATCH (i:Ingredient)-[:PART_OF]->(r:Recipe) WHERE i.nodeId IN {0} RETURN r")
     public List<Recipe> getRecipesWithIngredients(List<String> ingredientNodeIdArray);
 
-    @Query("MATCH (u:User)-[:FAVED]->(r:Recipe) WHERE u.nodeId = {0} RETURN r")
-    public List<Recipe> getFavedRecipes(String usernameNodeId);
+    @Query("MATCH (u:User)-[:FAVED]->(r:Recipe)<-[:CREATED]-(uc:User) WHERE u.nodeId = {0} RETURN COLLECT(r) as recipe,uc as user")
+    UserToRecipeQueryResult getFavedRecipes(String usernameNodeId);
 
-    @Query("MATCH (u:User)-[:BLACKLISTED]->(r:Recipe) WHERE u.nodeId = {0} RETURN r")
-    public List<Recipe> getBlacklistedRecipes(String usernameNodeId);
+    @Query("MATCH (u:User)-[:BLACKLISTED]->(r:Recipe)<-[:CREATED]-(uc:User) WHERE u.nodeId = {0} RETURN COLLECT(r) as recipe,uc as user")
+    UserToRecipeQueryResult getBlacklistedRecipes(String usernameNodeId);
 
-    @Query("MATCH (u:User)-[:SEE_LATER]->(r:Recipe) WHERE u.nodeId = {0} RETURN r")
-    public List<Recipe> getSeeLaterRecipes(String usernameNodeId);
+    @Query("MATCH (u:User)-[:SEE_LATER]->(r:Recipe)<-[:CREATED]-(uc:User) WHERE u.nodeId = {0} RETURN COLLECT(r) as recipe,uc as user")
+    UserToRecipeQueryResult getSeeLaterRecipes(String usernameNodeId);
 
-    @Query("MATCH (u:User)-[:CREATED]->(r:Recipe) WHERE u.nodeId = {0} RETURN r")
-    public List<Recipe> getCreatedRecipes(String usernameNodeId);
+    @Query("MATCH (u:User)-[:CREATED]->(r:Recipe) WHERE u.nodeId = {0} RETURN COLLECT(r) as recipe,u as user")
+    UserToRecipeQueryResult getCreatedRecipes(String usernameNodeId);
 }

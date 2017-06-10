@@ -3,6 +3,8 @@ package com.recipeland.controller;
 
 import com.recipeland.pojo.Ingredient;
 import com.recipeland.pojo.Recipe;
+
+import com.recipeland.queryResult.UserToRecipeQueryResult;
 import com.recipeland.repository.RecipeRepository;
 import com.recipeland.saver.RecipeSaver;
 import org.springframework.beans.factory.BeanFactory;
@@ -11,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -63,7 +62,7 @@ public class RecipeController {
         }
 
         //Var to keep the index
-        int indexOfCurrentIngredient = 0;
+        int indexOfCurrentIngredient;
 
         //Create all ingredients and asociate with the recipe
         for (String ingredient : ingredients) {
@@ -98,22 +97,22 @@ public class RecipeController {
     }
 
     @RequestMapping("/getBlacklistedRecipes")
-    public List<Recipe> getBlacklistedRecipes(String userNodeId){
+    public UserToRecipeQueryResult getBlacklistedRecipes(String userNodeId){
         return recipeRepository.getBlacklistedRecipes(userNodeId);
     }
 
     @RequestMapping("/getCreatedRecipes")
-    public List<Recipe> getCreatedRecipes(String userNodeId){
+    public UserToRecipeQueryResult getCreatedRecipes(String userNodeId){
         return recipeRepository.getCreatedRecipes(userNodeId);
     }
 
     @RequestMapping("/getSeeLaterRecipes")
-    public List<Recipe> getSeeLaterRecipes(String userNodeId){
+    public UserToRecipeQueryResult getSeeLaterRecipes(String userNodeId){
         return recipeRepository.getSeeLaterRecipes(userNodeId);
     }
 
     @RequestMapping("/getFavedRecipes")
-    public List<Recipe> getFavedRecipes(String userNodeId){
+    public UserToRecipeQueryResult getFavedRecipes(String userNodeId){
         return recipeRepository.getFavedRecipes(userNodeId);
     }
 
