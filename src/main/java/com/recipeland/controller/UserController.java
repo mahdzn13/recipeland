@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -45,18 +47,18 @@ public class UserController {
     }
 
     @RequestMapping("/userFavedRecipe")
-    public void userFavedRecipe(String recipeNodeId,String userNodeId){
-        userRepository.userFavedRecipe(recipeNodeId, userNodeId);
+    public void userFavedRecipe(HttpServletRequest request, HttpServletResponse response){
+        userRepository.userFavedRecipe(request.getParameter("recipeNodeId"),request.getParameter("userNodeId")) ;
     }
 
     @RequestMapping("/userBlacklistedRecipe")
-    public void userBlacklistedRecipe(String recipeNodeId,String userNodeId){
-        userRepository.userBlacklistedRecipe(recipeNodeId, userNodeId);
+    public void userBlacklistedRecipe(HttpServletRequest request, HttpServletResponse response){
+        userRepository.userBlacklistedRecipe(request.getParameter("recipeNodeId"),request.getParameter("userNodeId"));
     }
 
     @RequestMapping("/userSeeLaterRecipe")
-    public void userSeeLaterRecipe(String recipeNodeId,String userNodeId){
-        userRepository.userSeeLaterRecipe(recipeNodeId, userNodeId);
+    public void userSeeLaterRecipe(HttpServletRequest request, HttpServletResponse response){
+        userRepository.userSeeLaterRecipe(request.getParameter("recipeNodeId"),request.getParameter("userNodeId"));
     }
 
     @RequestMapping("/getUserNode")

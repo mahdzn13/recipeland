@@ -93,12 +93,12 @@ public class TestController {
         uc.userCreatedRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),uc.getUserNode("ralphy").getNodeId());
 
         //User Developer :faved,blacklisted,seelater
-        uc.userFavedRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),uc.getUserNode("Developer").getNodeId());
+        //uc.userFavedRecipe(rc.getRecipeNode("Turkey chili jacket potatoes").getNodeId(),uc.getUserNode("Developer").getNodeId());
 
-        uc.userBlacklistedRecipe(rc.getRecipeNode("Cheap-as-chips veggie pizza").getNodeId(),uc.getUserNode("Developer").getNodeId());
+        //uc.userBlacklistedRecipe(rc.getRecipeNode("Cheap-as-chips veggie pizza").getNodeId(),uc.getUserNode("Developer").getNodeId());
 
-        uc.userSeeLaterRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),uc.getUserNode("Developer").getNodeId());
-        uc.userSeeLaterRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),uc.getUserNode("Developer").getNodeId());
+        //uc.userSeeLaterRecipe(rc.getRecipeNode("Quick mushroom & spinach lasagna").getNodeId(),uc.getUserNode("Developer").getNodeId());
+        //uc.userSeeLaterRecipe(rc.getRecipeNode("Refried bean quesadillas").getNodeId(),uc.getUserNode("Developer").getNodeId());
 
 
         //Relationships :PART_OF
