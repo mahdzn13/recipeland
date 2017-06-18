@@ -31,7 +31,10 @@ public class RecipeController {
     @Autowired
     private RecipeSaver recipeSaver;
 
-    //Working POST so now implement it lazy fuck
+
+      //////////////////////////////////
+     //           CREATES            //
+    //////////////////////////////////
     @RequestMapping("/createRecipe")
     public void createRecipe(HttpServletRequest request, HttpServletResponse response){
         //Extract all the data for the recipe
@@ -86,6 +89,9 @@ public class RecipeController {
         recipeSaver.recipeSaver("Spaghetti", "http://www.allendeshnos.cl/image/cache/catalog/logos/perro-80x80.png","");
     }
 
+      ///////////////////////////////////
+     //             GETS              //
+    ///////////////////////////////////
     @RequestMapping("/getRecipeNode")
     public Recipe getRecipeNode(String recipeName){
         return recipeRepository.getRecipeNode(recipeName);
@@ -97,7 +103,7 @@ public class RecipeController {
     }
 
     @RequestMapping("/getBlacklistedRecipes")
-    public UserToRecipeQueryResult getBlacklistedRecipes(String userNodeId){
+    public List<Recipe> getBlacklistedRecipes(String userNodeId){
         return recipeRepository.getBlacklistedRecipes(userNodeId);
     }
 
@@ -107,12 +113,12 @@ public class RecipeController {
     }
 
     @RequestMapping("/getSeeLaterRecipes")
-    public UserToRecipeQueryResult getSeeLaterRecipes(String userNodeId){
+    public List<Recipe> getSeeLaterRecipes(String userNodeId){
         return recipeRepository.getSeeLaterRecipes(userNodeId);
     }
 
     @RequestMapping("/getFavedRecipes")
-    public UserToRecipeQueryResult getFavedRecipes(String userNodeId){
+    public List<Recipe> getFavedRecipes(String userNodeId){
         return recipeRepository.getFavedRecipes(userNodeId);
     }
 
@@ -144,6 +150,24 @@ public class RecipeController {
         return result;
     }
 
+      ///////////////////////////////////
+     //      Relationship removal     //
+    ///////////////////////////////////
+    @RequestMapping("/removeFavedRecipe")
+    public void removeFavedRecipe(HttpServletRequest request, HttpServletResponse response){
+        recipeRepository.removeFavedRecipe(request.getParameter("userNodeId"),request.getParameter("recipeNodeId"));
+
+    }
+
+    @RequestMapping("/removeBlacklistedRecipe")
+    public void removeBlacklistedRecipe(HttpServletRequest request, HttpServletResponse response){
+        recipeRepository.removeBlacklistedRecipe(request.getParameter("userNodeId"),request.getParameter("recipeNodeId"));
+
+    }
+
+      /////////////////////////////////
+     //           Deletes           //
+    /////////////////////////////////
     @RequestMapping("/deleteRecipes")
     public void deleteAllRecipes(){
         recipeRepository.deleteAll();

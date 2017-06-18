@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 
@@ -26,6 +28,16 @@ public class AllergyController {
     @RequestMapping("/createAllergy")
     public void createAllergy(String allergyName, String allergyDescription){
         allergySaver.allergySaver(allergyName,allergyDescription);
+    }
+
+    @RequestMapping("/addAllergyToUser")
+    public void addAllergyToUser(HttpServletRequest request, HttpServletResponse response){
+        allergyRepository.addAllergyToUser(request.getParameter("userNodeId"),request.getParameter("allergyNodeId"));
+    }
+
+    @RequestMapping("/removeAllergyFromUser")
+    public void removeAllergyFromUser(HttpServletRequest request, HttpServletResponse response){
+        allergyRepository.removeAllergyFromUser(request.getParameter("userNodeId"),request.getParameter("allergyNodeId"));
     }
 
     @RequestMapping("/createAllergies")

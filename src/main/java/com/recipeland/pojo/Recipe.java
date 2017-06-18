@@ -25,6 +25,7 @@ public class Recipe extends BasicNode {
         this.name = name;
         this.image = image;
         this.recipeText = recipeText;
+
     }
 
 
