@@ -18,11 +18,12 @@ public class UserSaver {
     public void userSaver(String userName, String email, String name, String surname){
         //Creation of the data
         User user = new User(userName,email,name,surname);
-
+        System.out.println("Usersaver: " + user);
         //Create UUID
         generator.generateNodeId(user);
 
         //Creation of nodes using the data
         userRepository.save(user);
+
     }
 }

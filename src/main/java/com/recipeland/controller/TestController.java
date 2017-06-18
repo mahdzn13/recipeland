@@ -77,8 +77,8 @@ public class TestController {
         ic.createIngredient("tomato sauce");
 
         //Users inserts
-        uc.createUser("ralphy","ralphy@recipeland.com","Ralph","The One");
-        uc.createUser("Developer","Developerd@recipeland.com","Developer","Deviloper");
+        //uc.createUser("ralphy","ralphy@recipeland.com","Ralph","The One");
+        //uc.createUser("Developer","Developerd@recipeland.com","Developer","Deviloper");
 
         //Allergies inserts
         ac.createAllergy("wheat allergy","Caused by wheat");

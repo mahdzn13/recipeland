@@ -33,8 +33,9 @@ public class UserController {
     UserSaver usersaver;
 
     @RequestMapping("/createUser")
-    public void createUser(String username, String email, String name, String surname){
-        usersaver.userSaver(username,email,name,surname);
+    public void createUser(HttpServletRequest request, HttpServletResponse response){
+        usersaver.userSaver(request.getParameter("username"),request.getParameter("email"),request.getParameter("name"),request.getParameter("surname"));
+
     }
 
     @RequestMapping("/createUsers")
